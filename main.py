@@ -1,4 +1,4 @@
-from flask import Flask , render_template
+from flask import Flask, render_template, request
 
 """
 These are the URLs that will give you remote jobs for the word 'python'
@@ -15,6 +15,12 @@ app = Flask("SuperScrapper")
 @app.route("/")
 def home():
     return render_template("home.html")
-    
+
+@app.route("/report")
+def report():
+  word = request.args.get('word')
+  return render_template("report.html",searchingBy=word)
+
 app.run(host="0.0.0.0")
 
+ 
