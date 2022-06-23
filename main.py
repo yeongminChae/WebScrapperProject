@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 """
 These are the URLs that will give you remote jobs for the word 'python'
@@ -19,6 +19,10 @@ def home():
 @app.route("/report")
 def report():
   word = request.args.get('word')
+  if word :
+    word = word.lower()
+  else :
+    return redirect("/")
   return render_template("report.html",searchingBy=word)
 
 app.run(host="0.0.0.0")
