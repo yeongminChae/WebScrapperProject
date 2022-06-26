@@ -1,9 +1,9 @@
 import csv
 
-def save_to_file(job_lists):
-    file = open("job_lists.csv", mode="w") 
+def save_job_file(job_list):
+    file = open("job_list.csv", mode="w", encoding='utf-8-sig')
     writer = csv.writer(file)
     writer.writerow(["Title", "Company", "Link"])
-    for i in job_lists:
+    for i in job_list:
         writer.writerow(list(i.values()))
     return
